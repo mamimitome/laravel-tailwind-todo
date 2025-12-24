@@ -5,7 +5,7 @@
 </head>
 <body class="bg-gray-100">
 <div class="max-w-xl mx-auto mt-10 bg-white p-6 rounded shadow">
-    <h1 class="text-xl font-bold mb-4">ToDoリスト</h1>
+    <h1 class="text-6xl font-extrabold text-red-600 mb-4">ToDoリスト</h1>
 
     <form method="POST" action="/todos" class="flex gap-2 mb-4">
     @csrf
