@@ -23,10 +23,10 @@ class TodoController extends Controller
             'title' => $request->title,
         ]);
 
-        return redirect('/todos');
+        return redirect()->route('todos.index');
     }
 
-    public function update(\Illuminate\Http\Request $request, \App\Models\Todo $todo)
+    public function update(Request $request, Todo $todo)
     {
     $todo->update([
         // チェックされて送信されたら "on" が来るので true、来なければ false
@@ -40,7 +40,7 @@ class TodoController extends Controller
     {
     $todo->delete();
 
-    return redirect('/todos');
+    return redirect()->route('todos.index');
     }
 
 }
