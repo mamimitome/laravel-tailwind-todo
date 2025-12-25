@@ -38,3 +38,7 @@ npm run dev
 
 # Terminal 2（サーバー）
 php artisan serve
+
+## Screenshots
+![Todo App Screenshot](docs/todo.png)
+
