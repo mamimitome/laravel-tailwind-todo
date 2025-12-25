@@ -62,7 +62,7 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ##  スクリーンショット
 
-※ 後ほど追加予定
+![Todo App Screenshot](docs/todo.png)
 
 ---
 
