@@ -1,24 +1,25 @@
-# Render公式の「PHP + Nginx」構成に合わせた形（Laravel向け）:contentReference[oaicite:2]{index=2}
-FROM ghcr.io/renderinc/nginx-php-fpm:8.3
+FROM php:8.3-cli
 
 WORKDIR /var/www/html
 
-# Nginx設定
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN apt-get update && apt-get install -y \
+  git unzip curl libsqlite3-dev \
+  && docker-php-ext-install pdo pdo_sqlite \
+  && rm -rf /var/lib/apt/lists/*
 
-# アプリコード
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Node（Vite build用）
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+  && apt-get update && apt-get install -y nodejs \
+  && rm -rf /var/lib/apt/lists/*
+
 COPY . .
 
-# composer
 RUN composer install --no-dev --optimize-autoloader
-
-# Node / Vite build（本番用に固める）:contentReference[oaicite:3]{index=3}
 RUN npm ci
 RUN npm run build
 
-# 起動スクリプト
-RUN chmod +x start.sh
-
-EXPOSE 80
-CMD ["/var/www/html/start.sh"]
-
+# RenderはPORT環境変数でポートを渡すので、それで起動
+CMD php artisan migrate --force || true \
+ && php artisan serve --host 0.0.0.0 --port ${PORT:-10000}
