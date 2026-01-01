@@ -1,25 +1,26 @@
 # Laravel + Tailwind CSS Todo App
 
-Laravel と Tailwind CSS を使って作成した、シンプルな Todo 管理アプリです。  
-プログラミング学習のアウトプットとして、CRUD 機能の実装からデプロイまでを一通り行いました。
+Laravel と Tailwind CSS を使用して作成した、認証付きのシンプルな Todo 管理アプリです。
+Laravel 学習のアウトプットとして、CRUD 機能の実装から本番環境へのデプロイまでを一通り経験しました。
 
 ---
 
-## 🔗 公開URL（実際に動くアプリ）
+## 公開URL（実際に動くアプリ）
 
 https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-##  アプリ概要
+## アプリ概要
 
-- Todo の追加・一覧表示・完了切り替え・削除ができます
-- Laravel の MVC 構造を意識して実装しました
-- Tailwind CSS を使ってシンプルな UI を作成しています
+- Todo の追加・一覧表示・完了切り替え・削除が可能
+- Laravel の MVC 構造を意識して設計・実装
+- Tailwind CSS を用いて、シンプルで見やすい UI を作成
+- ログインユーザーごとに Todo を管理できるよう実装
 
 ---
 
-##  機能一覧（CRUD）
+## 機能一覧（CRUD）
 
 | 操作 | 内容 |
 |----|----|
@@ -30,7 +31,7 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-##  使用技術
+## 使用技術
 
 - Laravel 12
 - PHP 8.4
@@ -43,7 +44,7 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-##  構成（MVC）
+## アプリ構成（MVC）
 
 - Model：`app/Models/Todo.php`
 - Controller：`app/Http/Controllers/TodoController.php`
@@ -52,37 +53,38 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-##  デプロイについて
+## デプロイについて
 
-- Render を使って本番環境にデプロイしています
-- Docker を利用して Laravel アプリを起動しています
-- 本番環境では `APP_DEBUG=false` に設定しています
+- Render を使用して本番環境にデプロイ
+- Docker を用いて Laravel アプリを起動
+- 本番環境では `APP_DEBUG=false` に設定し、セキュリティを考慮
 
 ---
 
-##  スクリーンショット
+## スクリーンショット
 
 ![Todo App Screenshot](docs/todo.png)
 
 ---
 
-## 📂 リポジトリ
+## リポジトリ
 
 https://github.com/mamimitome/laravel-tailwind-todo
 
 ---
 
-## 📝 学習ポイント
+## 学習・工夫ポイント
 
-- Laravel の基本的な CRUD 実装
-- ルーティングとコントローラの役割理解
-- Tailwind CSS を使った UI 構築
-- GitHub への Push / 管理
-- Render を使ったデプロイ経験
+- Laravel における CRUD の基本的な流れを理解
+- ルーティング・コントローラ・ビューの役割を意識した実装
+- ログインユーザーとデータを紐付ける設計
+- Tailwind CSS を使った UI 調整
+- GitHub を使ったコード管理
+- Render を利用したデプロイ経験
 
 ---
 
-##  作成者
+## 作成者
 
-mami mitome  
-プログラミング学習中（Laravel / PHP）
+mami mitome
+Laravel / PHP を中心に学習中
