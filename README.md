@@ -1,6 +1,7 @@
 # Laravel + Tailwind CSS Todo App
 
-Laravel と Tailwind CSS を使って作成した、学習用の Todo 管理アプリです。 
+Laravel と Tailwind CSS を使って作成した、学習用の Todo 管理アプリです。
+
 Laravel の基本的な使い方（CRUD、認証、画面表示の流れ）を理解することを目的に作成しました。
 
 ---
