@@ -1,33 +1,35 @@
 # Laravel + Tailwind CSS Todo App
 
-Laravel と Tailwind CSS を使用して作成した、認証付きのシンプルな Todo 管理アプリです。
-Laravel 学習のアウトプットとして、CRUD 機能の実装から本番環境へのデプロイまでを一通り経験しました。
+Laravel と Tailwind CSS を使って作成した、学習用の Todo 管理アプリです。 
+Laravel の基本的な使い方（CRUD、認証、画面表示の流れ）を理解することを目的に作成しました。
 
 ---
 
-## 公開URL（実際に動くアプリ）
+## このアプリについて
+
+- Todo を追加・表示・完了切り替え・削除できるシンプルなアプリです
+- ログインしたユーザーごとに Todo を管理できるようにしています
+- Laravel 学習のアウトプットとして、実際に動くアプリを作ることを目標にしました
+
+---
+
+## 公開URL（Render）
 
 https://laravel-tailwind-todo.onrender.com/todos
 
----
-
-## アプリ概要
-
-- Todo の追加・一覧表示・完了切り替え・削除が可能
-- Laravel の MVC 構造を意識して設計・実装
-- Tailwind CSS を用いて、シンプルで見やすい UI を作成
-- ログインユーザーごとに Todo を管理できるよう実装
+※ 無料プランのため、初回アクセス時に少し時間がかかる場合があります。
 
 ---
 
-## 機能一覧（CRUD）
+## 機能一覧
 
-| 操作 | 内容 |
-|----|----|
-| Create | Todo を追加 |
-| Read | Todo 一覧を表示 |
-| Update | 完了 / 未完了の切り替え |
-| Delete | Todo を削除 |
+|機能 ：内容
+
+Todo追加 : やることを登録
+Todo一覧 : 登録した Todo を表示
+完了切替  : チェックで完了／未完了を切り替え
+削除  : Todo を削除
+認証  : ログインユーザーごとに Todo を管理
 
 ---
 
@@ -38,26 +40,32 @@ https://laravel-tailwind-todo.onrender.com/todos
 - SQLite
 - Tailwind CSS
 - Vite
-- Docker（Render デプロイ用）
 - Git / GitHub
-- Render（本番環境デプロイ）
+- Render（デプロイ）
 
 ---
 
-## アプリ構成（MVC）
+## アプリ構成（簡単な説明）
 
-- Model：`app/Models/Todo.php`
-- Controller：`app/Http/Controllers/TodoController.php`
-- View：`resources/views/todos/index.blade.php`
-- Route：`routes/web.php`
+- Model：Todo データを扱うクラス  
+  `app/Models/Todo.php`
+
+- Controller：画面表示や処理をまとめたクラス  
+  `app/Http/Controllers/TodoController.php`
+
+- View：画面（HTML）部分  
+  `resources/views/todos/index.blade.php`
+
+- Route：URL と処理の対応付け  
+  `routes/web.php`
 
 ---
 
 ## デプロイについて
 
-- Render を使用して本番環境にデプロイ
-- Docker を用いて Laravel アプリを起動
-- 本番環境では `APP_DEBUG=false` に設定し、セキュリティを考慮
+- Render を使ってアプリを公開しています
+- Docker を使用して Laravel アプリを起動しています
+- 本番環境では `APP_DEBUG=false` に設定しています
 
 ---
 
@@ -67,24 +75,18 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-## リポジトリ
+## 学習して理解できたこと
 
-https://github.com/mamimitome/laravel-tailwind-todo
-
----
-
-## 学習・工夫ポイント
-
-- Laravel における CRUD の基本的な流れを理解
-- ルーティング・コントローラ・ビューの役割を意識した実装
-- ログインユーザーとデータを紐付ける設計
-- Tailwind CSS を使った UI 調整
+- Laravel の基本的な CRUD の流れ
+- ルーティング・コントローラ・ビューの役割
+- ログインユーザーとデータを紐付ける考え方
+- Tailwind CSS を使った簡単な UI 調整
 - GitHub を使ったコード管理
-- Render を利用したデプロイ経験
+- アプリを実際に公開するまでの流れ
 
 ---
 
-## 作成者
+## 👩‍💻 作成者
 
 mami mitome
-Laravel / PHP を中心に学習中
+Laravel / PHP を中心にプログラミングを学習中です。
