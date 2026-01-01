@@ -20,6 +20,8 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm ci
 RUN npm run build
 
-# RenderはPORT環境変数でポートを渡すので、それで起動
-CMD php artisan migrate --force || true \
+CMD php artisan key:generate --force || true \
+ && php artisan config:clear \
+ && php artisan migrate --force || true \
  && php artisan serve --host 0.0.0.0 --port ${PORT:-10000}
+
