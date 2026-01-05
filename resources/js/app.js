@@ -1,4 +1,6 @@
 import './bootstrap';
+import './todos';
+
 
 import Alpine from 'alpinejs';
 

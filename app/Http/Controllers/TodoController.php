@@ -16,7 +16,14 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::where('user_id', Auth::id())
-            ->latest()
+            ->orderByRaw("
+            CASE priority
+                WHEN '高' THEN 1
+                WHEN '中' THEN 2
+                WHEN '低' THEN 3
+            END
+        ")
+            ->orderBy('order')
             ->get();
 
         return view('todos.index', compact('todos'));
@@ -26,28 +33,32 @@ class TodoController extends Controller
     {
         $request->validate([
             'title' => 'required|max:50',
+            'priority' => 'required|in:高,中,低',
         ]);
 
         Todo::create([
             'title' => $request->title,
             'completed' => false,
             'user_id' => Auth::id(),
+            'priority' => $request->priority,
+            'order' => Todo::where('user_id', Auth::id())->max('order') + 1,
         ]);
+
 
         return redirect()->route('todos.index');
     }
 
     public function update(Request $request, Todo $todo)
     {
-    $this->authorize('update', $todo);
+        $this->authorize('update', $todo);
 
-    $todo->update([
-        'completed' => $request->boolean('completed'),
-    ]);
+        $todo->update([
+            'completed' => $request->boolean('completed'),
+        ]);
 
-    return response()->json([
-        'completed' => $todo->completed,
-    ]);
+        return response()->json([
+            'completed' => $todo->completed,
+        ]);
     }
 
     public function destroy(Todo $todo)
@@ -57,5 +68,34 @@ class TodoController extends Controller
         $todo->delete();
 
         return redirect()->route('todos.index');
+    }
+    public function updatePriority(Request $request, Todo $todo)
+    {
+        $this->authorize('update', $todo);
+
+        $request->validate([
+            'priority' => 'required|in:高,中,低',
+        ]);
+
+        $todo->update([
+            'priority' => $request->priority,
+        ]);
+
+        return response()->json([
+            'priority' => $todo->priority,
+        ]);
+    }
+    public function reorder(Request $request)
+    {
+        foreach ($request->order as $item) {
+            Todo::where('id', $item['id'])
+                ->where('user_id', Auth::id())
+                ->update([
+                    'order' => $item['order'],
+                    'priority' => $item['priority'],
+                ]);
+        }
+
+        return response()->json(['status' => 'ok']);
     }
 }

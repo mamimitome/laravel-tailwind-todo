@@ -24,8 +24,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');
     Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');
+    Route::post('/todos/reorder', [TodoController::class, 'reorder']);
     Route::patch('/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
+    Route::patch('/todos/{todo}/priority', [TodoController::class, 'updatePriority'])
+        ->name('todos.updatePriority');
     Route::delete('/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
