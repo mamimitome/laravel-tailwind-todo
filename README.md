@@ -111,7 +111,7 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-## 🚀 デプロイについて
+## デプロイについて
 
 -   Render を使用してアプリを公開
 -   Docker を利用して Laravel 環境を構築
@@ -121,13 +121,13 @@ https://laravel-tailwind-todo.onrender.com/todos
 
 ---
 
-## 🖼 スクリーンショット
+## スクリーンショット
 
 ![Todo App Screenshot](docs/todo.png)
 
 ---
 
-## 📚 学習して理解できたこと
+## 学習して理解できたこと
 
 -   Laravel の基本的な CRUD の流れ
 -   ルーティング・Controller・View の役割分担
