@@ -10,5 +10,4 @@ Artisan::command('inspire', function () {
 
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command('app:todo-due-notify')
-    ->dailyAt('09:00');
+Schedule::command('app:todo-due-notify')->everyMinute();
