@@ -34,6 +34,7 @@ class TodoController extends Controller
         $request->validate([
             'title' => 'required|max:50',
             'priority' => 'required|in:高,中,低',
+            'due_date' => 'nullable|date',
         ]);
 
         Todo::create([
@@ -42,6 +43,7 @@ class TodoController extends Controller
             'user_id' => Auth::id(),
             'priority' => $request->priority,
             'order' => Todo::where('user_id', Auth::id())->max('order') + 1,
+            'due_date' => $request->due_date,
         ]);
 
 

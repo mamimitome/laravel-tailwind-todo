@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateColor(item, priority) {
     const title = item.querySelector('.todo-title');
+    const dueDate = item.querySelector('.todo-due-date');
+
     if (!title) return;
 
     title.classList.remove('text-red-600', 'text-yellow-600', 'text-blue-600');
@@ -67,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const todoId = this.dataset.id;
         const item = this.closest('.todo-item');
         const title = item.querySelector('.todo-title');
+        const dueDate = item.querySelector('.todo-due-date');
 
         fetch(`/todos/${todoId}`, {
             method: 'PATCH',
@@ -81,10 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(() => {
             // ★ 見た目を即反映
             if (this.checked) {
-                title.classList.add('line-through', 'text-gray-400');
-            } else {
-                title.classList.remove('line-through', 'text-gray-400');
-            }
+    title.classList.add('line-through', 'text-gray-400');
+
+    if (dueDate) {
+        dueDate.classList.remove('text-gray-500');
+        dueDate.classList.add('text-gray-400');
+    }
+} else {
+    title.classList.remove('line-through', 'text-gray-400');
+
+    if (dueDate) {
+        dueDate.classList.remove('text-gray-400');
+        dueDate.classList.add('text-gray-500');
+    }
+}
+
         }).catch(() => {
             alert('更新に失敗しました');
             this.checked = !this.checked;
